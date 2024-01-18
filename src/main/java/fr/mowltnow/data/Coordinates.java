@@ -14,7 +14,7 @@ public class Coordinates {
     private int y;
 
     public boolean overlaps(Coordinates coordinates) {
-        return x > coordinates.getX() || y > coordinates.getY();
+        return x > coordinates.getX() || y > coordinates.getY() || x < 0 || y < 0;
     }
 
     @Override

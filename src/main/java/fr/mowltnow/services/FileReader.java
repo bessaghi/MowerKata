@@ -22,15 +22,9 @@ public class FileReader {
 
         List<String> instructions = readFile(filePath);
 
-        Lawn lawn = new Lawn();
-
-        instructions.stream().findFirst()
-                .ifPresentOrElse(
-                        lawn::setSize,
-                        () -> {
-                            throw new IncorrectSizeException("You must introduce the size of the lawn");
-                        }
-                );
+        Lawn lawn = instructions.stream().findFirst()
+                .map(Lawn::new)
+                .orElseThrow(() -> new IncorrectSizeException("You must introduce the size of the lawn"));
 
         for (int i = 1; i < instructions.size() - 1; i = i + 2) {
             Mower mower = new Mower();

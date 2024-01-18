@@ -9,15 +9,15 @@ import java.util.List;
 @Data
 public class Lawn {
 
-    private Coordinates size;
+    private Coordinates maxSize;
     private List<Mower> mowers = new ArrayList<>();
 
-    public void setSize(String size) {
-        this.size = CoordinatesReader.read(size);
+    public Lawn(String maxSize) {
+        this.maxSize = CoordinatesReader.read(maxSize);
     }
 
     public void addMower(Mower mower) {
-        mower.setMaxSize(size);
+        mower.setMaxSize(maxSize);
         mowers.add(mower);
     }
 }
