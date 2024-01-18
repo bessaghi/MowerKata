@@ -32,4 +32,18 @@ class MowerTest {
         assertThat(mower.getPosition()).isEqualTo(new Position(x, y, orientation));
     }
 
+    @ParameterizedTest
+    @CsvSource({
+            "1 2 N, GAGAGAGAA, 1, 3, N",
+            "3 3 E, AADAADADDA, 5, 1, E"
+    })
+    void should_perform_a_list_of_movements(String position, String movements, int x, int y, Orientation orientation) {
+        Mower mower = new Mower();
+        mower.setInitialPosition(position);
+
+        mower.execute(movements);
+
+        assertThat(mower.getPosition()).isEqualTo(new Position(x, y, orientation));
+    }
+
 }

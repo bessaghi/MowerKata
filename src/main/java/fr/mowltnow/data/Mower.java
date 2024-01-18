@@ -16,4 +16,11 @@ public class Mower {
     public void move(Direction direction) {
         position = PositionReader.move(position, direction);
     }
+
+    public void execute(String movements) {
+        movements.chars().mapToObj(c -> (char) c)
+                .map(String::valueOf)
+                .map(Direction::valueOf)
+                .forEach(this::move);
+    }
 }
