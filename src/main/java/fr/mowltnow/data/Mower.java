@@ -2,7 +2,7 @@ package fr.mowltnow.data;
 
 import lombok.Data;
 
-import static fr.mowltnow.services.PositionReader.readPosition;
+import static fr.mowltnow.utils.PositionReader.readPosition;
 
 
 @Data
@@ -20,7 +20,7 @@ public class Mower {
     }
 
     public void move(Direction direction) {
-        position = direction.getMove().apply(this);
+        position = direction.getExecuteInstruction().apply(this);
     }
 
     public Position goStraight() {

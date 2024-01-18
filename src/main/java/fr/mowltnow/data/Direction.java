@@ -12,5 +12,5 @@ public enum Direction {
     G(Mower::turnLeft),
     D(Mower::turnRight);
 
-    private final Function<Mower, Position> move;
+    private final Function<Mower, Position> executeInstruction;
 }

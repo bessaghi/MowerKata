@@ -1,6 +1,6 @@
 package fr.mowltnow.data;
 
-import fr.mowltnow.services.CoordinatesReader;
+import fr.mowltnow.utils.CoordinatesReader;
 import lombok.Data;
 
 import java.util.ArrayList;

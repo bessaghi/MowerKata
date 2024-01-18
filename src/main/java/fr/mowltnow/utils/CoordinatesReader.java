@@ -1,4 +1,4 @@
-package fr.mowltnow.services;
+package fr.mowltnow.utils;
 
 import fr.mowltnow.data.Coordinates;
 import fr.mowltnow.exceptions.IncorrectSizeException;

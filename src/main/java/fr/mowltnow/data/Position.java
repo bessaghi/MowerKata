@@ -19,7 +19,7 @@ public class Position {
     }
 
     public Position goStraight(Coordinates maxSize) {
-        Coordinates newPosition = orientation.getFunction().apply(coordinates.getX(), coordinates.getY());
+        Coordinates newPosition = orientation.getMove().apply(coordinates.getX(), coordinates.getY());
         if (!newPosition.overlaps(maxSize)) {
             coordinates = newPosition;
         }

@@ -1,12 +1,10 @@
-package fr.mowltnow.services;
+package fr.mowltnow.utils;
 
-import fr.mowltnow.data.Direction;
-import fr.mowltnow.data.Mower;
 import fr.mowltnow.data.Orientation;
 import fr.mowltnow.data.Position;
 import fr.mowltnow.exceptions.IncorrectSizeException;
 
-import static fr.mowltnow.services.CoordinatesReader.toCoordinates;
+import static fr.mowltnow.utils.CoordinatesReader.toCoordinates;
 import static fr.mowltnow.utils.GlobalConstants.SEPARATOR;
 import static java.util.Optional.ofNullable;
 

@@ -25,19 +25,30 @@ public class FileReader {
     }
 
     public String execute(String filePath) {
-
         List<String> instructions = readFile(filePath);
 
-        Lawn lawn = instructions.stream().findFirst()
+        Lawn lawn = initializeLawn(instructions);
+        executeInstructions(instructions, lawn);
+
+        return computeFinalPositions(lawn);
+    }
+
+    private static Lawn initializeLawn(List<String> instructions) {
+        return instructions.stream()
+                .findFirst()
                 .map(Lawn::new)
                 .orElseThrow(() -> new IncorrectSizeException("You must introduce the size of the lawn"));
+    }
 
+    private void executeInstructions(List<String> instructions, Lawn lawn) {
         for (int i = 1; i < instructions.size() - 1; i = i + 2) {
             Mower mower = new Mower(instructions.get(i));
-            mowerMover.execute(instructions.get(i + 1), mower);
             lawn.addMower(mower);
+            mowerMover.execute(instructions.get(i + 1), mower);
         }
+    }
 
+    private static String computeFinalPositions(Lawn lawn) {
         return lawn.getMowers()
                 .stream()
                 .map(Mower::getPosition)

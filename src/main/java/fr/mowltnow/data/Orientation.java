@@ -13,7 +13,7 @@ public enum Orientation {
     E((x, y) -> new Coordinates(x + 1, y)),
     W((x, y) -> new Coordinates(x - 1, y));
 
-    private final BiFunction<Integer, Integer, Coordinates> function;
+    private final BiFunction<Integer, Integer, Coordinates> move;
 
     public Orientation turnRight() {
         return switch (this) {
