@@ -24,7 +24,4 @@ public class PositionReader {
         return new Position(toCoordinates(position), Orientation.valueOf(position[2]));
     }
 
-    public static Position move(Mower mower, Direction direction) {
-        return direction.getMove().apply(mower);
-    }
 }

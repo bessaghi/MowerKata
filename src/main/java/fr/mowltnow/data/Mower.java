@@ -1,7 +1,8 @@
 package fr.mowltnow.data;
 
-import fr.mowltnow.services.PositionReader;
 import lombok.Data;
+
+import static fr.mowltnow.services.PositionReader.readPosition;
 
 
 @Data
@@ -10,21 +11,17 @@ public class Mower {
     private Position position;
     private Coordinates maxSize;
 
-    public void setInitialPosition(String position) {
-        this.position = PositionReader.readPosition(position);
+    public Mower(String position) {
+        setPosition(position);
+    }
+
+    public void setPosition(String position) {
+        this.position = readPosition(position);
     }
 
     public void move(Direction direction) {
-        position = PositionReader.move(this, direction);
+        position = direction.getMove().apply(this);
     }
-
-    public void execute(String movements) {
-        movements.chars().mapToObj(c -> (char) c)
-                .map(String::valueOf)
-                .map(Direction::valueOf)
-                .forEach(this::move);
-    }
-
 
     public Position goStraight() {
         return position.goStraight(maxSize);

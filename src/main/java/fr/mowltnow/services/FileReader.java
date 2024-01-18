@@ -18,6 +18,12 @@ import static java.util.stream.Collectors.joining;
 
 public class FileReader {
 
+    private final MowerMover mowerMover;
+
+    public FileReader() {
+        this.mowerMover = new MowerMover();
+    }
+
     public String execute(String filePath) {
 
         List<String> instructions = readFile(filePath);
@@ -27,9 +33,8 @@ public class FileReader {
                 .orElseThrow(() -> new IncorrectSizeException("You must introduce the size of the lawn"));
 
         for (int i = 1; i < instructions.size() - 1; i = i + 2) {
-            Mower mower = new Mower();
-            mower.setInitialPosition(instructions.get(i));
-            mower.execute(instructions.get(i + 1));
+            Mower mower = new Mower(instructions.get(i));
+            mowerMover.execute(instructions.get(i + 1), mower);
             lawn.addMower(mower);
         }
 

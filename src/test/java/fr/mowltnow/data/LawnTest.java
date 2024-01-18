@@ -36,8 +36,7 @@ class LawnTest {
     })
     void when_mower_overlaps_lawn_it_should_not_move(String initialPosition, int x, int y, Orientation orientation) {
         Lawn lawn = new Lawn("2 2");
-        Mower mower = new Mower();
-        mower.setInitialPosition(initialPosition);
+        Mower mower = new Mower(initialPosition);
         lawn.addMower(mower);
 
         mower.move(Direction.A);
