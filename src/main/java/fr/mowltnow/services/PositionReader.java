@@ -1,6 +1,7 @@
 package fr.mowltnow.services;
 
 import fr.mowltnow.data.Direction;
+import fr.mowltnow.data.Mower;
 import fr.mowltnow.data.Orientation;
 import fr.mowltnow.data.Position;
 import fr.mowltnow.exceptions.IncorrectSizeException;
@@ -23,7 +24,7 @@ public class PositionReader {
         return new Position(toCoordinates(position), Orientation.valueOf(position[2]));
     }
 
-    public static Position move(Position position, Direction direction) {
-        return direction.getMove().apply(position);
+    public static Position move(Mower mower, Direction direction) {
+        return direction.getMove().apply(mower);
     }
 }

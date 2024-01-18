@@ -8,13 +8,14 @@ import lombok.Data;
 public class Mower {
 
     private Position position;
+    private Coordinates maxSize;
 
     public void setInitialPosition(String position) {
         this.position = PositionReader.readPosition(position);
     }
 
     public void move(Direction direction) {
-        position = PositionReader.move(position, direction);
+        position = PositionReader.move(this, direction);
     }
 
     public void execute(String movements) {
@@ -25,4 +26,15 @@ public class Mower {
     }
 
 
+    public Position goStraight() {
+        return position.goStraight(maxSize);
+    }
+
+    public Position turnLeft() {
+        return position.turnLeft();
+    }
+
+    public Position turnRight() {
+        return position.turnRight();
+    }
 }

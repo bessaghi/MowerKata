@@ -8,9 +8,9 @@ import java.util.function.Function;
 @Getter
 @AllArgsConstructor
 public enum Direction {
-    A(Position::goStraight),
-    G(Position::turnLeft),
-    D(Position::turnRight);
+    A(Mower::goStraight),
+    G(Mower::turnLeft),
+    D(Mower::turnRight);
 
-    private final Function<Position, Position> move;
+    private final Function<Mower, Position> move;
 }

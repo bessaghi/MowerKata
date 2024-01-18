@@ -17,6 +17,7 @@ public class Lawn {
     }
 
     public void addMower(Mower mower) {
+        mower.setMaxSize(size);
         mowers.add(mower);
     }
 }

@@ -1,11 +1,13 @@
 package fr.mowltnow.data;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
 import static fr.mowltnow.utils.GlobalConstants.SEPARATOR;
 
 @Getter
+@EqualsAndHashCode
 @AllArgsConstructor
 public class Position {
     private Coordinates coordinates;
@@ -16,8 +18,11 @@ public class Position {
         this.orientation = orientation;
     }
 
-    public Position goStraight() {
-        coordinates = orientation.getFunction().apply(coordinates);
+    public Position goStraight(Coordinates maxSize) {
+        Coordinates newPosition = orientation.getFunction().apply(coordinates.getX(), coordinates.getY());
+        if (!newPosition.overlaps(maxSize)) {
+            coordinates = newPosition;
+        }
         return this;
     }
 
