@@ -22,15 +22,15 @@ class LawnTest {
 
     @ParameterizedTest
     @CsvSource({
-            "5 X",
-            "5-2",
-            "2"
+            "5 X, Lawn size must only be numbers",
+            "5-2, The size of the lawn doesn't have the correct format (X X)",
+            "2, The size of the lawn doesn't have the correct format (X X)"
     })
-    void should_throw_exception_if_size_is_not_correct(String size) {
+    void should_throw_exception_if_size_is_not_correct(String size, String message) {
         Lawn lawn = new Lawn();
 
         assertThatThrownBy(() -> lawn.setSize(size))
                 .isInstanceOf(IncorrectSizeException.class)
-                .hasMessage("Incorrect size of the lawn");
+                .hasMessage(message);
     }
 }

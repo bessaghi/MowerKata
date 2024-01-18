@@ -4,27 +4,28 @@ import fr.mowltnow.data.Coordinates;
 import fr.mowltnow.exceptions.IncorrectSizeException;
 import lombok.extern.slf4j.Slf4j;
 
-import static java.lang.Integer.parseInt;
+import java.util.Optional;
 
-@Slf4j
+import static java.lang.Integer.parseInt;
+import static java.util.Optional.ofNullable;
+
 public class CoordinatesReader {
 
     private static final String SEPARATOR = " ";
 
     public static Coordinates read(String coordinates) {
-        String[] coord = coordinates.split(SEPARATOR);
-        if (coord.length < 2) {
-            log.error("The size of the lawn doesn't have the correct format {}", coordinates);
-            throw new IncorrectSizeException();
-        }
+        return ofNullable(coordinates)
+                .map(it -> it.split(SEPARATOR))
+                .filter(it -> it.length == 2)
+                .map(CoordinatesReader::toCoordinates)
+                .orElseThrow(() -> new IncorrectSizeException("The size of the lawn doesn't have the correct format (X X)"));
+    }
+
+    private static Coordinates toCoordinates(String[] coords) {
         try {
-            return new Coordinates(
-                    parseInt(coord[0]),
-                    parseInt(coord[1])
-            );
+            return new Coordinates(parseInt(coords[0]), parseInt(coords[1]));
         } catch (NumberFormatException e) {
-            log.error("Could not read size from coordinates {}", coordinates, e);
-            throw new IncorrectSizeException();
+            throw new IncorrectSizeException("Lawn size must only be numbers", e);
         }
     }
 }
