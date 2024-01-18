@@ -1,4 +1,4 @@
-package fr.mowltnow;
+package fr.mowltnow.data;
 
 import fr.mowltnow.data.Coordinates;
 import fr.mowltnow.services.CoordinatesReader;

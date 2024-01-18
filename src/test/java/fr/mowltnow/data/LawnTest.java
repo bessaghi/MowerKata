@@ -1,6 +1,5 @@
-package fr.mowltnow;
+package fr.mowltnow.data;
 
-import fr.mowltnow.data.Coordinates;
 import fr.mowltnow.exceptions.IncorrectSizeException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -33,4 +32,5 @@ class LawnTest {
                 .isInstanceOf(IncorrectSizeException.class)
                 .hasMessage(message);
     }
+
 }
