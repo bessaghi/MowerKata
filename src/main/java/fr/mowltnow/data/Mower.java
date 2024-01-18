@@ -23,4 +23,6 @@ public class Mower {
                 .map(Direction::valueOf)
                 .forEach(this::move);
     }
+
+
 }

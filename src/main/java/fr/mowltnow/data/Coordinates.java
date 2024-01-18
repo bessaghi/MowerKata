@@ -1,9 +1,11 @@
 package fr.mowltnow.data;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 
-@Data
+import static fr.mowltnow.utils.GlobalConstants.SEPARATOR;
+
+@Getter
 @AllArgsConstructor
 public class Coordinates {
     private int x;
@@ -27,5 +29,10 @@ public class Coordinates {
     public Coordinates moveUp() {
         y++;
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return x + SEPARATOR + y;
     }
 }

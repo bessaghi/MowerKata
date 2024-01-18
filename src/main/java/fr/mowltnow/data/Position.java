@@ -1,9 +1,11 @@
 package fr.mowltnow.data;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Getter;
 
-@Data
+import static fr.mowltnow.utils.GlobalConstants.SEPARATOR;
+
+@Getter
 @AllArgsConstructor
 public class Position {
     private Coordinates coordinates;
@@ -27,5 +29,10 @@ public class Position {
     public Position turnLeft() {
         orientation = orientation.turnLeft();
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return coordinates + SEPARATOR + orientation;
     }
 }
