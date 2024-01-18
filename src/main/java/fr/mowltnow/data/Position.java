@@ -14,4 +14,18 @@ public class Position {
         this.orientation = orientation;
     }
 
+    public Position goStraight() {
+        coordinates = orientation.getFunction().apply(coordinates);
+        return this;
+    }
+
+    public Position turnRight() {
+        orientation = orientation.turnRight();
+        return this;
+    }
+
+    public Position turnLeft() {
+        orientation = orientation.turnLeft();
+        return this;
+    }
 }

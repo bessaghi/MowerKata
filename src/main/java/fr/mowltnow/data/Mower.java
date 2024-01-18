@@ -12,4 +12,8 @@ public class Mower {
     public void setInitialPosition(String position) {
         this.position = PositionReader.readPosition(position);
     }
+
+    public void move(Direction direction) {
+        position = PositionReader.move(position, direction);
+    }
 }
