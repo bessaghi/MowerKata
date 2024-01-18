@@ -1,6 +1,6 @@
 package fr.mowltnow;
 
-import org.assertj.core.api.Assertions;
+import fr.mowltnow.data.Coordinates;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
